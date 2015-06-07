@@ -1,0 +1,22 @@
+{
+  "name": "annotest",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "fill-keys": "^1.0.1",
+    "lodash": "^3.9.3",
+    "proxyquire": "^1.5.0",
+    "reflect-metadata": "^0.1.0"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-typescript": "^2.7.6",
+    "typescript": "^1.5.0-beta"
+  }
+}
