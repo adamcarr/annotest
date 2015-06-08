@@ -1,9 +1,12 @@
-import ModuleDecorator from './ModuleDecorator';
-import TestMethodDecorator from './TestMethodDecorator';
+import * as Decorators from './Decorators';
 
 var module = {
-	ModuleDecorator: ModuleDecorator,
-	TestMethodDecorator: TestMethodDecorator
+	TestModule: Decorators.ModuleDecorator,
+	Test: Decorators.TestDecorator,
+	Before: Decorators.BeforeDecorator,
+	BeforeEach: Decorators.BeforeEachDecorator,
+	After: Decorators.AfterDecorator,
+	AfterEach: Decorators.AfterEachDecorator
 };
 
 export default module;
