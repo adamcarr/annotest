@@ -14,14 +14,14 @@ var tsProject = ts.createProject({
 });
 
 gulp.task('scripts', function() {
-    gulp.src('src/**/*.ts').pipe(ts(tsProject))
+    return gulp.src('src/**/*.ts').pipe(ts(tsProject))
         .pipe(gulp.dest('dist'));
 });
 
 gulp.task('create-cli', ['scripts'], function () {
-    gulp.src('dist/Runner.js')
-        .pipe(concat.header('#! /usr/bin/env node \n\n'))
-        .pipe(gulp.dest('bin'));
+    return gulp.src('dist/Runner.js')
+        .pipe(concat.header('#!/usr/bin/env node \n\n'))
+        .pipe(gulp.dest('dist'));
 });
 
 gulp.task('default', ['scripts', 'create-cli']);

@@ -25,6 +25,6 @@
   },
   "preferGlobal": true,
   "bin": {
-    "annotest": "bin/Runner.js"
+    "annotest": "./dist/Runner.js"
   }
 }
