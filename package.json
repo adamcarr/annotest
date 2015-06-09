@@ -9,14 +9,22 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bluebird": "^2.9.27",
     "fill-keys": "^1.0.1",
+    "glob": "^5.0.10",
     "lodash": "^3.9.3",
     "proxyquire": "^1.5.0",
     "reflect-metadata": "^0.1.0"
   },
   "devDependencies": {
     "gulp": "^3.9.0",
+    "gulp-concat": "^2.5.2",
+    "gulp-concat-util": "^0.5.2",
     "gulp-typescript": "^2.7.6",
     "typescript": "^1.5.0-beta"
+  },
+  "preferGlobal": true,
+  "bin": {
+    "annotest": "bin/Runner.js"
   }
 }

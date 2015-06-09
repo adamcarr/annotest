@@ -4,7 +4,8 @@ import IModuleMocks from './IModuleMocks';
 export var Names = {
 	ModuleDecoratorMocks:'annotest:ModuleDecoratorMocks',
 	ModuleDecoratorName:'annotest:ModuleDecoratorName',
-	TestMethodDecoratorCollection:'annotest:TestMethodDecoratorCollection',
+	TestDecoratorCollection:'annotest:TestDecoratorCollection',
+	TestAsyncDecoratorCollection:'annotest:TestAsyncDecoratorCollection',
 	BeforeDecoratorName:'annotest:BeforeDecoratorName',
 	AfterDecoratorName:'annotest:AfterDecoratorName',
 	BeforeEachDecoratorName:'annotest:BeforeEachDecoratorName',
@@ -19,13 +20,26 @@ export var AfterEachDecorator: MethodDecorator = MethodNameDecorator(Names.After
 export function TestDecorator(description: string): MethodDecorator {
 	return function (target: Object, propertyKey: string) {
 		var testMethodNames: {[propertyKey: string]: any} = {};
-		if (Reflect.hasMetadata(Names.TestMethodDecoratorCollection, target)) {
-			testMethodNames = Reflect.getMetadata(Names.TestMethodDecoratorCollection, target);
+		if (Reflect.hasMetadata(Names.TestDecoratorCollection, target)) {
+			testMethodNames = Reflect.getMetadata(Names.TestDecoratorCollection, target);
 		}
 		
 		testMethodNames[propertyKey] = description;
 		
-		Reflect.defineMetadata(Names.TestMethodDecoratorCollection, testMethodNames, target);
+		Reflect.defineMetadata(Names.TestDecoratorCollection, testMethodNames, target);
+	}
+}
+
+export function TestAsyncDecorator(description: string): MethodDecorator {
+	return function (target: Object, propertyKey: string) {
+		var testMethodNames: {[propertyKey: string]: any} = {};
+		if (Reflect.hasMetadata(Names.TestAsyncDecoratorCollection, target)) {
+			testMethodNames = Reflect.getMetadata(Names.TestAsyncDecoratorCollection, target);
+		}
+		
+		testMethodNames[propertyKey] = description;
+		
+		Reflect.defineMetadata(Names.TestAsyncDecoratorCollection, testMethodNames, target);
 	}
 }
 

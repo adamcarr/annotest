@@ -3,35 +3,27 @@
 import * as assert from 'assert';
 import annotest from '../index';
 import {IPerson, IPersonWithCtor} from './IPerson';
-
 	
 var name = 'Adam';
 var age = 34;
 
-@annotest.TestModule('Person tests', {'./IsEighteenOrOlder': {default:(age: number) => age > 19}})
+@annotest.TestModule('Person tests', {'./IsEighteenOrOlder': {default:(age: number) => age >= 18}})
 class MyCustomTest {
 	static Person: IPerson;
 	
-	@annotest.Before
+	@annotest.BeforeEach
 	static before() {
 		var personConstructor: IPersonWithCtor = require('./Person')['default'];
 		MyCustomTest.Person = new personConstructor(name, age);
-		console.log('before called');
 	}
 	
-	@annotest.BeforeEach
-	static beforeEach() {console.log('beforeEach called');}
-	
-	@annotest.AfterEach
-	static afterEach() {console.log('afterEach called');}
-	
-	@annotest.After
-	static after() {console.log('after called');}
-	
-	@annotest.Test('Testing person constructor')
-	static testConstructor() {
+	@annotest.TestAsync('Testing person constructor')
+	static testConstructor(done: Function) {
 		assert.equal(MyCustomTest.Person.name, name);
 		assert.equal(MyCustomTest.Person.age, age, 'Ages should match');
+		setTimeout(function () {
+			done();
+		}, 200);
 	}
 	
 	@annotest.Test('Testing person canVote')	

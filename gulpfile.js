@@ -2,6 +2,7 @@
 
 var gulp = require('gulp');
 var ts = require('gulp-typescript');
+var concat = require('gulp-concat-util');
 
 var tsProject = ts.createProject({
     typescript: require('typescript'),
@@ -16,8 +17,11 @@ gulp.task('scripts', function() {
     gulp.src('src/**/*.ts').pipe(ts(tsProject))
         .pipe(gulp.dest('dist'));
 });
-gulp.task('watch', ['scripts'], function() {
-    gulp.watch('src/**/*.ts', ['scripts']);
+
+gulp.task('create-cli', ['scripts'], function () {
+    gulp.src('dist/Runner.js')
+        .pipe(concat.header('#! /usr/bin/env node \n\n'))
+        .pipe(gulp.dest('bin'));
 });
 
-gulp.task('default', ['scripts']);
+gulp.task('default', ['scripts', 'create-cli']);

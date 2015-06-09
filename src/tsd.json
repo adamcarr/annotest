@@ -13,6 +13,15 @@
     },
     "proxyquire/proxyquire.d.ts": {
       "commit": "2a5858c16563634453533009242b8e0b18521370"
+    },
+    "bluebird/bluebird.d.ts": {
+      "commit": "8ebc099072402b1a80d205c3eece59bed963ad87"
+    },
+    "glob/glob.d.ts": {
+      "commit": "2c53b9b2d13523d5d9cef4866ab1a22a6fee1ba8"
+    },
+    "minimatch/minimatch.d.ts": {
+      "commit": "2c53b9b2d13523d5d9cef4866ab1a22a6fee1ba8"
     }
   }
 }
